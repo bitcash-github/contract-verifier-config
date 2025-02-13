@@ -1,0 +1,301 @@
+SETCP0
+(:methods
+  recv_internal: 
+    s0 PUSH
+    SEMPTY
+    <{
+      4 BLKDROP
+    }> PUSHCONT
+    IFJMP
+    s0 s1 XCHG
+    CTOS
+    4 LDU
+    s0 s1 XCHG
+    1 PUSHINT
+    AND
+    <{
+      4 BLKDROP
+    }> PUSHCONT
+    IFJMP
+    LDMSGADDR
+    LDMSGADDR
+    s1 POP
+    LDGRAMS
+    s1 POP
+    1 PUSHINT
+    SDSKIPFIRST
+    LDGRAMS
+    s1 POP
+    LDGRAMS
+    s0 POP
+    s0 s2 XCHG
+    32 LDU
+    376746144 PUSHINT
+    s2 s-1 PUXC
+    EQUAL
+    <{
+      s1 POP
+      s4 POP
+      ROTREV
+      10 CALLDICT
+    }> PUSHCONT
+    IFJMP
+    395134233 PUSHINT
+    s1 s2 XCHG
+    EQUAL
+    <{
+      s4 s4 s4 XCHG3
+      s0 s3 XCHG
+      11 CALLDICT
+    }> PUSHCONT
+    IFJMP
+    5 BLKDROP
+    16 PUSHPOW2DEC
+    THROWANY
+
+  10: 
+    2DROP
+    s0 s1 XCHG
+    64 LDU
+    LDGRAMS
+    LDMSGADDR
+    c4 PUSH
+    CTOS
+    LDGRAMS
+    LDMSGADDR
+    LDREF
+    LDREF
+    s0 POP
+    3 1 BLKDROP2
+    MYADDR
+    s3 s0 s0 XCHG3
+    0 PUSHINT
+    0 1 2 XCPUXC
+    4 0 3 XC2PU
+    NEWC
+    s0 s4 XCHG2
+    STGRAMS
+    ROT
+    STSLICER
+    s0 s1 XCHG
+    STSLICER
+    STREF
+    ENDC
+    s2 PUSH
+    NEWC
+    2 STU
+    s1 s2 XCHG
+    STDICT
+    STDICT
+    1 STU
+    ENDC
+    s0 PUSH
+    HASHCU
+    0 PUSHINT
+    4 PUSHINT
+    NEWC
+    3 STU
+    8 STI
+    256 STU
+    ENDC
+    CTOS
+    s0 s2 XCHG
+    LDMSGADDR
+    LDDICT
+    s1 POP
+    LDGRAMS
+    7 PUSHINT
+    24 PUSHINT
+    NEWC
+    6 STU
+    s0 s6 XCHG2
+    STSLICER
+    0 PUSHINT
+    STGRAMS
+    s1 s5 XCHG
+    108 STU
+    s1 s3 XCHG
+    STREF
+    395134233 PUSHINT
+    NEWC
+    32 STU
+    s1 s6 XCHG
+    64 STU
+    s0 s4 XCHG2
+    STGRAMS
+    s0 s5 XCHG2
+    STSLICER
+    ROT
+    STSLICER
+    s0 s3 XCHG2
+    STGRAMS
+    ROT
+    STSLICER
+    ENDC
+    s0 s1 XCHG
+    STREF
+    ENDC
+    64 PUSHINT
+    SENDRAWMSG
+
+  11: 
+    s3 POP
+    s0 s3 XCHG
+    64 LDU
+    LDGRAMS
+    LDMSGADDR
+    LDMSGADDR
+    LDGRAMS
+    s6 s7 XCPU
+    SUB
+    10000000 PUSHINT
+    TUCK
+    MIN
+    SUB
+    10000000 PUSHINT
+    ADD
+    s1 s7 XCHG
+    SUB
+    s6 PUSH
+    <{
+      s6 s7 PUXC
+      ADD
+      s1 s7 XCHG
+      SUB
+      1935855772 PUSHINT
+      NEWC
+      32 STU
+      s4 s-1 PUXC
+      64 STU
+      s0 s3 XCHG2
+      STGRAMS
+      s1 PUSH
+      STSLICER
+      s0 s4 XCHG2
+      STSLICER
+      ENDC
+      1 PUSHINT
+      16 PUSHINT
+      NEWC
+      6 STU
+      s0 s5 XCHG2
+      STSLICER
+      s0 s5 XCHG2
+      STGRAMS
+      s1 s3 XCHG
+      107 STU
+      s1 s3 XCHG
+      STREF
+      ENDC
+      1 PUSHINT
+      SENDRAWMSG
+      s1 s2 XCHG
+    }> PUSHCONT
+    <{
+      s4 s7 XCHG
+      5 2 BLKDROP2
+    }> PUSHCONT
+    IFELSE
+    s1 PUSH
+    2 PLDU
+    0 NEQINT
+    s1 PUSH
+    0 GTINT
+    AND
+    <{
+      3 BLKDROP
+    }> PUSHCONT
+    <{
+      100000000 PUSHINT
+      LESS
+      <{
+        s0 POP
+        PUSHSLICE
+      }> PUSHCONT
+      IF
+      3576854235 PUSHINT
+      0 PUSHINT
+      16 PUSHINT
+      NEWC
+      6 STU
+      s0 s3 XCHG2
+      STSLICER
+      s2 PUSH
+      STGRAMS
+      s1 s2 XCHG
+      107 STU
+      32 STU
+      64 STU
+      ENDC
+      7 PUSHPOW2
+      SENDRAWMSG
+    }> IFREFELSE
+
+  get_wallet_data: 
+    c4 PUSH
+    CTOS
+    LDGRAMS
+    LDMSGADDR
+    LDREF
+    LDREF
+    s0 POP
+    3 1 BLKDROP2
+    0 PUSHINT
+    MYADDR
+    MYADDR
+    1 3 BLKSWAP
+
+  get_wallet_address: 
+    c4 PUSH
+    CTOS
+    LDGRAMS
+    LDMSGADDR
+    LDREF
+    LDREF
+    s0 POP
+    3 1 BLKDROP2
+    MYADDR
+    s0 s1 XCHG
+    0 PUSHINT
+    0 1 2 XCPUXC
+    4 0 3 XC2PU
+    NEWC
+    s0 s4 XCHG2
+    STGRAMS
+    ROT
+    STSLICER
+    s0 s1 XCHG
+    STSLICER
+    STREF
+    ENDC
+    s2 PUSH
+    NEWC
+    2 STU
+    s1 s2 XCHG
+    STDICT
+    STDICT
+    1 STU
+    ENDC
+    HASHCU
+    0 PUSHINT
+    4 PUSHINT
+    NEWC
+    3 STU
+    8 STI
+    256 STU
+    ENDC
+    CTOS
+
+  get_jetton_data: 
+    c4 PUSH
+    CTOS
+    LDGRAMS
+    LDMSGADDR
+    LDREF
+    LDREF
+    s0 POP
+    -1 PUSHINT
+    3 1 BLKSWAP
+) 19 DICTPUSHCONST
+DICTIGETJMPZ
+11 THROWARG
